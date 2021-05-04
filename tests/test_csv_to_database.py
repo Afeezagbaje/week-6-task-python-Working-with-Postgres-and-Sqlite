@@ -14,13 +14,13 @@ class TestCsvToDatabase(unittest.TestCase):
 
     def test_add_student(self):
         before_adding_student = len(self.execute.all_student_result())
-        add_student = self.execute.add_student('Agbaje', 'Afeez', '419-41-9419', '100', '90', '80', '85', '85', 'A')
+        add_student = self.execute.add_student('Agbaje', 'Afeez', '419-419-419', '100', '90', '80', '85', '85', 'A')
         after_adding_student = len(self.execute.all_student_result())
         self.assertNotEqual(before_adding_student, after_adding_student)
         self.assertIsNotNone(add_student)
 
     def test_update(self):
-        update = self.execute.update('100', '90', '80', '85', '85', 'A', '419-41-9419')
+        update = self.execute.update('100', '90', '80', '85', '85', 'A', '419-419-419')
         self.assertIsNotNone(update)
         self.assertIsInstance(update, list)
 
@@ -37,7 +37,7 @@ class TestCsvToDatabase(unittest.TestCase):
         self.assertIsInstance(self.execute.failed(), list)
 
     def delete(self):
-        delete_student = self.execute.delete('419-41-9419')
+        delete_student = self.execute.delete('419-419-419')
         self.assertIsNotNone(delete_student)
         self.assertIsInstance(self.execute.delete(delete_student), list)
 
