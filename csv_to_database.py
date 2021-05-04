@@ -6,6 +6,8 @@ class CsvToDatabase:
     def __init__(self):
         self.connection = sqlite3.connect('gradedb.sqlite')
         self.cursor = self.connection.cursor()
+        self.create_table()
+        self.load_data()
 
     def create_table(self):
         self.cursor.execute('DROP TABLE IF EXISTS grades')
@@ -65,7 +67,3 @@ class CsvToDatabase:
         self.cursor.execute(delete_query, data)
         self.connection.commit()
         return self.all_student_result()
-
-
-cs = CsvToDatabase()
-print(cs.all_student_result())
