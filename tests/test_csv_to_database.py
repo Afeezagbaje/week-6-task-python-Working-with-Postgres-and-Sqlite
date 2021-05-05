@@ -1,5 +1,5 @@
 import unittest
-from ..csv_to_database import CsvToDatabase
+from csv_sql.csv_to_database import CsvToDatabase
 
 
 class TestCsvToDatabase(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestCsvToDatabase(unittest.TestCase):
 
     def test_all_student_result(self):
         self.assertIsNotNone(self.execute.all_student_result())
-        self.assertIsInstance(self.execute.all_student_result(), list)
+        self.assertIsInstance(self.execute.all_student_result(), str)
 
     def test_add_student(self):
         before_adding_student = len(self.execute.all_student_result())
@@ -22,24 +22,24 @@ class TestCsvToDatabase(unittest.TestCase):
     def test_update(self):
         update = self.execute.update('100', '90', '80', '85', '85', 'A', '419-419-419')
         self.assertIsNotNone(update)
-        self.assertIsInstance(update, list)
+        self.assertIsInstance(update, str)
 
     def test_passed(self):
         self.assertIsNotNone(self.execute.passed())
-        self.assertIsInstance(self.execute.passed(), list)
+        self.assertIsInstance(self.execute.passed(), str)
 
     def test_passed_test1(self):
         self.assertIsNotNone(self.execute.passed_test1())
-        self.assertIsInstance(self.execute.passed_test1(), list)
+        self.assertIsInstance(self.execute.passed_test1(), str)
 
     def test_failed(self):
         self.assertIsNotNone(self.execute.failed())
-        self.assertIsInstance(self.execute.failed(), list)
+        self.assertIsInstance(self.execute.failed(), str)
 
     def delete(self):
         delete_student = self.execute.delete('419-419-419')
         self.assertIsNotNone(delete_student)
-        self.assertIsInstance(self.execute.delete(delete_student), list)
+        self.assertIsInstance(self.execute.delete(delete_student), str)
 
     def tearDown(self):
         self.execute.cursor.close()

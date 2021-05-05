@@ -27,9 +27,17 @@ class CsvToDatabase:
             self.cursor.execute('INSERT INTO grades VALUES (?,?,?,?,?,?,?,?,?)', row_tuple)
         self.connection.commit()
 
+    def fetch_all(self):
+        students = self.cursor.fetchall()
+        for student in students:
+            print(f'Last Name: {student[0]}\nFirst Name: {student[1]}\nSSN: {student[2]}\n'
+                  f'Test1: {student[3]}\nTest2: {student[4]}\nTest3: {student[5]}\n'
+                  f'Test4: {student[6]}\nFinal: {student[7]}\nGrade: {student[8]}\n')
+
+
     def all_student_result(self):
         self.cursor.execute('SELECT * FROM grades')
-        return self.cursor.fetchall()
+        return self.fetch_all()
 
     def add_student(self, last_name, first_name, ssn, test1, test2, test3, test4, final, grade):
         try:
@@ -51,15 +59,15 @@ class CsvToDatabase:
 
     def passed(self):
         self.cursor.execute('SELECT * FROM grades WHERE final>="50"')
-        return self.cursor.fetchall()
+        return self.fetch_all()
 
     def passed_test1(self):
         self.cursor.execute('SELECT * FROM grades WHERE test1>="45"')
-        return self.cursor.fetchall()
+        return self.fetch_all()
 
     def failed(self):
         self.cursor.execute('SELECT * FROM grades WHERE final<"50"')
-        return self.cursor.fetchall()
+        return self.fetch_all()
 
     def delete(self, ssn):
         delete_query = 'DELETE FROM grades WHERE ssn=?'
