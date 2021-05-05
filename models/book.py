@@ -3,6 +3,15 @@ from utils.connection import connection
 
 
 class Book:
+    """
+    This class create an interface where we can interact with the books table in the database
+    ......
+    def all() - Fetch all books available for a user
+    def get() Fetch one book by id
+    def create() Creates a book record
+    def update() Update a book record
+    def delete() Delete a book record
+    """
     def __init__(self):
         self.connection = connection()
         self.cursor = self.connection.cursor()

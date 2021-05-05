@@ -5,30 +5,35 @@ from models.book import Book
 class TestBook(unittest.TestCase):
     def setUp(self):
         self.exec = Book()
+        self.id = 1
 
     def test_all(self):
-        self.assertIsNotNone(self.exec.all())
-        self.assertIsInstance(self.exec.all(), list)
+        self.assertIsNotNone(self.exec.all(self.id))
+        self.assertIsInstance(self.exec.all(self.id), list)
 
     def test_get_all_books(self):
         self.assertIsNotNone(self.exec.get_all_books())
         self.assertIsInstance(self.exec.get_all_books(), list)
 
     def test_get(self):
-        self.assertIsNotNone(self.exec.get())
-        self.assertIsInstance(self.exec.get(), list)
+        self.assertIsNotNone(self.exec.get(self.id))
+        self.assertIsInstance(self.exec.get(self.id), list)
 
     def test_create(self):
-        self.assertIsNotNone(self.exec.create())
-        self.assertIsInstance(self.exec.create(), list)
+        user_books = len(self.exec.all(self.id))
+        add_book_to_user = self.exec.create(self.id, 'Book of Life', 10000)
+        self.assertIsNotNone(add_book_to_user)
+        self.assertIsInstance(add_book_to_user, list)
+        self.assertNotEqual(add_book_to_user, user_books)
 
     def test_update(self):
-        self.assertIsNotNone(self.exec.update())
-        self.assertIsInstance(self.exec.update(), list)
+        update_book = self.exec.update(4, self. id, 'Book of Life', 10000)
+        self.assertIsNotNone(update_book)
+        self.assertIsInstance(update_book, list)
 
     def test_destroy(self):
-        self.assertIsNotNone(self.exec.destroy())
-        self.assertIsInstance(self.exec.destroy(), list)
+        self.assertIsNotNone(self.exec.destroy(4))
+        self.assertIsInstance(self.exec.destroy(4), list)
 
     def tearDown(self):
         self.exec.cursor.close()

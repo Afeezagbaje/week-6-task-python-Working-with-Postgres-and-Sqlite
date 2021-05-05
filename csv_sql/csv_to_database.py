@@ -3,6 +3,16 @@ import csv
 
 
 class CsvToDatabase:
+    """
+       This class add csv files into the database
+       ......
+       def all() Fetch all users available
+       def get() Fetch one user by id
+       def create() Create a user record
+       def update() Update a user record
+       def delete() Delete a user record
+
+       """
     def __init__(self):
         self.connection = sqlite3.connect('gradedb.sqlite')
         self.cursor = self.connection.cursor()

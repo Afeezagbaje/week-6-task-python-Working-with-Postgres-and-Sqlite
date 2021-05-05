@@ -2,6 +2,16 @@ from utils.connection import connection
 
 
 class User:
+    """
+    This class create an interface where we can interact with the users table in the database
+    ......
+    def all() Fetch all users available
+    def get() Fetch one user by id
+    def create() Create a user record
+    def update() Update a user record
+    def delete() Delete a user record
+
+    """
     def __init__(self):
         self.connection = connection()
         self.cursor = self.connection.cursor()
