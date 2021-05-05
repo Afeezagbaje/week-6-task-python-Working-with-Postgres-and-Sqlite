@@ -16,6 +16,7 @@ class TestCsvToDatabase(unittest.TestCase):
         after_adding_student = len(self.execute.all_student_result())
         self.assertNotEqual(before_adding_student, after_adding_student)
         self.assertIsNotNone(add_student)
+        self.assertEqual(add_student, after_adding_student)
 
     def test_update(self):
         update = self.execute.update('100', '90', '80', '85', '85', 'A', '419-419-419')

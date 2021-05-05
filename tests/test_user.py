@@ -1,10 +1,10 @@
 import unittest
-from models.book import Book
+from models.user import User
 
 
 class TestBook(unittest.TestCase):
     def setUp(self):
-        self.exec = Book()
+        self.exec = User()
 
     def test_all(self):
         self.assertIsNotNone(self.exec.all())
