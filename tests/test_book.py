@@ -17,7 +17,7 @@ class TestBook(unittest.TestCase):
 
     def test_get(self):
         self.assertIsNotNone(self.exec.get(self.id))
-        self.assertIsInstance(self.exec.get(self.id), list)
+        self.assertIsInstance(self.exec.get(self.id), tuple)
 
     def test_create(self):
         user_books = len(self.exec.all(self.id))
@@ -25,11 +25,6 @@ class TestBook(unittest.TestCase):
         self.assertIsNotNone(add_book_to_user)
         self.assertIsInstance(add_book_to_user, list)
         self.assertNotEqual(add_book_to_user, user_books)
-
-    def test_update(self):
-        update_book = self.exec.update(4, self. id, 'Book of Life', 10000)
-        self.assertIsNotNone(update_book)
-        self.assertIsInstance(update_book, list)
 
     def test_destroy(self):
         self.assertIsNotNone(self.exec.destroy(4))

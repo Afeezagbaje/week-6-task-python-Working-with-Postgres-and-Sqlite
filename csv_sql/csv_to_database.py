@@ -6,11 +6,15 @@ class CsvToDatabase:
     """
        This class add csv files into the database
        ......
-       def all() Fetch all users available
-       def get() Fetch one user by id
-       def create() Create a user record
-       def update() Update a user record
-       def delete() Delete a user record
+       def create_table() create the columns in our database
+       def load_data() read data from the csv file and add them into the database
+       def all_student_result() returns all the students and their in the database
+       def add_student() adds new student into the database
+       def update() help update an already existing user
+       def passed() returns all student that their total score is above 50
+       def passed_test1() returns all student that scored above 45 in test1
+       def failed() returns all students that score below 50 in their total score
+       def delete() delete a student using their SSN
 
        """
     def __init__(self):

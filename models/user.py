@@ -32,10 +32,10 @@ class User:
     def update(self, id, username, firstname, lastname):
         update_query = "UPDATE users SET username = %s, first_name = %s, last_name = %s, updated_at = now() " \
                        "WHERE id = %s "
-        self.cursor.execute(update_query, (username, firstname, lastname, id))
+        self.cursor.execute(update_query, (username, firstname, lastname, str(id)))
         self.connection.commit()
 
     def destroy(self, id):
-        self.cursor.execute('DELETE FROM users WHERE id=%s', id)
+        self.cursor.execute('DELETE FROM users WHERE id=%s', (str(id),))
         self.connection.commit()
-        return self.cursor.fetchone()
+        return self.all()

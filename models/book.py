@@ -39,11 +39,11 @@ class Book:
 
     def update(self, id, user_id, name, pages):
         update_query = "UPDATE books SET user_id = %s, name = %s, pages = %s, updated_at = now() WHERE id = %s"
-        self.cursor.execute(update_query, (user_id, name, pages, id))
+        self.cursor.execute(update_query, (user_id, name, pages, str(id)))
         self.connection.commit()
-        return self.cursor.fetchone()
+        return self.get(id)
 
     def destroy(self, id):
-        self.cursor.execute('DELETE FROM books WHERE id=%s', (id,))
+        self.cursor.execute('DELETE FROM books WHERE id=%s', (str(id,)))
         self.connection.commit()
-        return self.cursor.fetchone()
+        return self.get_all_books()
