@@ -44,5 +44,3 @@ class TestCsvToDatabase(unittest.TestCase):
         self.exec.connection.close()
 
 
-if __name__ == '__main__':
-    unittest.main()

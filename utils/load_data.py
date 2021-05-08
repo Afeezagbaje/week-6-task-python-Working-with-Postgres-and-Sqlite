@@ -1,4 +1,4 @@
-from connection import connection
+from utils.connection import connection
 
 
 class LoadData:
@@ -10,10 +10,10 @@ class LoadData:
     def load_data(self):
         self.cursor.execute('DROP TABLE if exists books CASCADE')
         self.cursor.execute('DROP TABLE if exists users CASCADE')
-        with open('schema.sql', 'r') as schema_file:
+        with open('sql/schema.sql', 'r') as schema_file:
             self.cursor.execute(schema_file.read())
             self.con.commit()
 
-        with open('seeder.sql', 'r') as seeder_file:
+        with open('sql/seeder.sql', 'r') as seeder_file:
             self.cursor.execute(seeder_file.read())
             self.con.commit()

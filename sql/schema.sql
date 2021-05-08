@@ -17,3 +17,4 @@ CREATE TABLE books (
     updated_at DATE,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );

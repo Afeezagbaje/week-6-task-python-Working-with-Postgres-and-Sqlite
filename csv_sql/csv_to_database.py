@@ -20,8 +20,8 @@ class CsvToDatabase:
     def __init__(self):
         self.connection = sqlite3.connect('gradedb.sqlite')
         self.cursor = self.connection.cursor()
-        self.create_table()
-        self.load_data()
+        # self.create_table()
+        # self.load_data()
 
     def create_table(self):
         self.cursor.execute('DROP TABLE IF EXISTS grades')

@@ -1,6 +1,6 @@
 import psycopg2
 from utils.connection import connection
-
+from utils.load_data import LoadData
 
 class Book:
     """
@@ -15,6 +15,8 @@ class Book:
     def __init__(self):
         self.connection = connection()
         self.cursor = self.connection.cursor()
+        load = LoadData()
+        load.load_data()
 
     def all(self, user_id):
         self.cursor.execute('SELECT * FROM books WHERE user_id=%s', str(user_id))
@@ -33,7 +35,7 @@ class Book:
             create_query = 'INSERT INTO books (user_id, name, pages) VALUES (%s, %s, %s)'
             self.cursor.execute(create_query, (user_id, name, pages))
             self.connection.commit()
-            return self.all(user_id)
+            # return self.all(user_id)
         except psycopg2.errors.UndefinedColumn:
             return 'User does not exist. Please assign the book to an existing User'
 
@@ -44,6 +46,6 @@ class Book:
         return self.get(id)
 
     def destroy(self, id):
-        self.cursor.execute('DELETE FROM books WHERE id=%s', (str(id,)))
+        self.cursor.execute('DELETE FROM books WHERE id=%s', ((id,)))
         self.connection.commit()
         return self.get_all_books()

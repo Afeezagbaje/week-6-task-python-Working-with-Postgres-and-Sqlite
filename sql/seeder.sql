@@ -1,0 +1,12 @@
+INSERT INTO users (username, first_name, last_name) VALUES ('fezzo24', 'Afeez', 'Agbaje');
+INSERT INTO users (username, first_name, last_name) VALUES ('tumbo', 'Ope', 'Oluwa');
+INSERT INTO users (username, first_name, last_name) VALUES ('kemzy', 'Feyikemi', 'Adewale');
+INSERT INTO books (user_id, name, pages) VALUES (1, 'Lord of the Ring', 360);
+INSERT INTO books (user_id, name, pages) VALUES (2, 'Akila and the Beast', 170);
+INSERT INTO books (user_id, name, pages) VALUES (1, 'Superman', 300);
+INSERT INTO books (user_id, name, pages) VALUES (2, 'Adventure of the Night', 150);
+INSERT INTO books (user_id, name, pages) VALUES (3, 'Creed', 100);
+INSERT INTO books (user_id, name, pages) VALUES (3, 'Firmer', 210);
+INSERT INTO books (user_id, name, pages) VALUES (3, 'Love and Hate', 150);
+INSERT INTO books (user_id, name, pages) VALUES (1, 'Berlin', 240);
+INSERT INTO books (user_id, name, pages) VALUES (2, 'A Journey to Hell', 160);
